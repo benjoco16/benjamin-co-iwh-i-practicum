@@ -1,0 +1,25 @@
+doctype html
+html
+    head
+        title= title
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        link(rel="stylesheet", href="/css/style.css")
+    body
+        main.form-wrapper
+            h1= title
+            a.action-link(href="/") Return to the homepage
+
+            if error
+                p.error-message= error
+
+            form(method="POST", action="/update-cobj")
+                label(for="name") Name
+                input#name(type="text", name="name", value=formData ? formData.name : '', required)
+
+                label(for="category") Category
+                input#category(type="text", name="category", value=formData ? formData.category : '', required)
+
+                label(for="price") Price
+                input#price(type="text", name="price", value=formData ? formData.price : '', required)
+
+                input(type="submit", value="Create Record")
